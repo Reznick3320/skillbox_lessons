@@ -63,12 +63,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Header = void 0;
+var root_1 = __webpack_require__(826);
 var React = __importStar(__webpack_require__(689));
-function Header() {
+function HeaderComponent() {
     return (React.createElement("header", null,
         React.createElement("h1", null, "Reddit for our own!")));
 }
-exports.Header = Header;
+exports.Header = (0, root_1.hot)(HeaderComponent);
 
 
 /***/ }),
@@ -91,6 +92,13 @@ module.exports = require("react");
 /***/ ((module) => {
 
 module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ 826:
+/***/ ((module) => {
+
+module.exports = require("react-hot-loader/root");
 
 /***/ })
 
