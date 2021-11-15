@@ -1,0 +1,10 @@
+.controls {
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.controlsValue {
+    color: var(--greyC4);
+}
