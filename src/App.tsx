@@ -7,7 +7,6 @@ import { Content } from "./shared/Content";
 import {CardsList} from "./shared/CardsList";
 
 
-
 function AppComponent() {
     return (
        <Layout>
