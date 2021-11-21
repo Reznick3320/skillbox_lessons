@@ -11,10 +11,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotate(90deg);
+    cursor: pointer;
     border-radius: 31px;
     background: transparent;
     border: 0;
+}
+
+.menuButton:hover {
+    border: 2px solid rgba(30,30,30,0.1);
 }
 
 .menuButton:active {

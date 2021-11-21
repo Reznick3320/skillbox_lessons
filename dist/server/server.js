@@ -202,7 +202,43 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardMenu = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardmenu_css_1 = __importDefault(__webpack_require__(/*! ./cardmenu.css */ \"./src/shared/CardsList/Card/CardMenu/cardmenu.css\"));\r\nfunction CardMenu() {\r\n    return (react_1.default.createElement(\"div\", { className: cardmenu_css_1.default.menu },\r\n        react_1.default.createElement(\"button\", { className: cardmenu_css_1.default.menuButton },\r\n            react_1.default.createElement(\"svg\", { width: \"5\", height: \"20\", viewBox: \"0 0 5 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n                react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"2.5\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n                react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"10\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n                react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"17.5\", r: \"2.5\", fill: \"#D9D9D9\" })))));\r\n}\r\nexports.CardMenu = CardMenu;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardMenu/CardMenu.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardMenu = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardmenu_css_1 = __importDefault(__webpack_require__(/*! ./cardmenu.css */ \"./src/shared/CardsList/Card/CardMenu/cardmenu.css\"));\r\nvar Dropdown_1 = __webpack_require__(/*! ../../../Dropdown */ \"./src/shared/Dropdown/index.ts\");\r\nvar CardMenuList_1 = __webpack_require__(/*! ./CardMenuList */ \"./src/shared/CardsList/Card/CardMenu/CardMenuList/index.ts\");\r\nfunction CardMenu() {\r\n    return (react_1.default.createElement(\"div\", { className: cardmenu_css_1.default.menu },\r\n        react_1.default.createElement(Dropdown_1.Dropdown, { onOpen: function () { }, onClose: function () { }, button: react_1.default.createElement(\"button\", { className: cardmenu_css_1.default.menuButton },\r\n                react_1.default.createElement(\"svg\", { width: \"5\", height: \"20\", viewBox: \"0 0 5 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n                    react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"2.5\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n                    react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"10\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n                    react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"17.5\", r: \"2.5\", fill: \"#D9D9D9\" }))) },\r\n            react_1.default.createElement(CardMenuList_1.CardMenuList, { postId: \"333\" }))));\r\n}\r\nexports.CardMenu = CardMenu;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardMenu/CardMenu.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/CardMenu/CardMenuList/CardMenuList.tsx":
+/*!**************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardMenu/CardMenuList/CardMenuList.tsx ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardMenuList = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardmenulist_css_1 = __importDefault(__webpack_require__(/*! ./cardmenulist.css */ \"./src/shared/CardsList/Card/CardMenu/CardMenuList/cardmenulist.css\"));\r\nfunction CardMenuList(_a) {\r\n    var postId = _a.postId;\r\n    return (react_1.default.createElement(\"ul\", { className: cardmenulist_css_1.default.cardMenuList },\r\n        react_1.default.createElement(\"li\", { onClick: function () { return console.log(postId); }, className: cardmenulist_css_1.default.menuItem }, \"\\u041A\\u043E\\u043C\\u0435\\u043D\\u0442\\u0430\\u0440\\u0438\\u0438\"),\r\n        react_1.default.createElement(\"li\", { className: cardmenulist_css_1.default.menuItem }, \"\\u041F\\u043E\\u0434\\u0435\\u043B\\u0438\\u0442\\u044C\\u0441\\u044F\"),\r\n        react_1.default.createElement(\"li\", { className: cardmenulist_css_1.default.menuItem }, \"\\u0421\\u043A\\u0440\\u044B\\u0442\\u044C\"),\r\n        react_1.default.createElement(\"li\", { className: cardmenulist_css_1.default.menuItem }, \"\\u0421\\u043E\\u0445\\u0440\\u0430\\u043D\\u0438\\u0442\\u044C\"),\r\n        react_1.default.createElement(\"li\", { className: cardmenulist_css_1.default.menuItem }, \"\\u041F\\u043E\\u0436\\u0430\\u043B\\u043E\\u0432\\u0430\\u0442\\u044C\\u0441\\u044F\")));\r\n}\r\nexports.CardMenuList = CardMenuList;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardMenu/CardMenuList/CardMenuList.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/CardMenu/CardMenuList/cardmenulist.css":
+/*!**************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardMenu/CardMenuList/cardmenulist.css ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n\t\"cardMenuList\": \"cardmenulist__cardMenuList--FDhEb\",\n\t\"menuItem\": \"cardmenulist__menuItem--2TI0d\"\n});\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardMenu/CardMenuList/cardmenulist.css?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/CardMenu/CardMenuList/index.ts":
+/*!******************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardMenu/CardMenuList/index.ts ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./CardMenuList */ \"./src/shared/CardsList/Card/CardMenu/CardMenuList/CardMenuList.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardMenu/CardMenuList/index.ts?");
 
 /***/ }),
 
