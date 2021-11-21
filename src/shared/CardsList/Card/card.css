@@ -1,4 +1,6 @@
 .card {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--white);
     border-radius: 7px;
 

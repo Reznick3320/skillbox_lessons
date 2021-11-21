@@ -8,8 +8,8 @@ import {CardControls} from "./CardControls";
 export function Card() {
   return (
       <li className={styles.card}>
-          <CardTextContent />
           <CardPreview />
+          <CardTextContent />
           <CardMenu />
           <CardControls />
       </li>
