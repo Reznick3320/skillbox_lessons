@@ -9,3 +9,8 @@
 .controlsValue {
     color: var(--greyC4);
 }
+
+.controlsDown, .controlsUp {
+    border: none;
+    cursor: pointer;
+}
