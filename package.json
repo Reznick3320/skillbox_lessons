@@ -5,7 +5,7 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=-93x-BPqZvnhkg node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=tXkgYb9d3y4LHLF8HDTZ-A node ./bin/dev.js",
     "test": "jest"
   },
   "author": "",
