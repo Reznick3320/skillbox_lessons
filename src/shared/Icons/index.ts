@@ -6,3 +6,4 @@ export * from './SaveIcon';
 export * from './ShareIcon';
 export * from './CardControlsUp';
 export * from './CardControlsDown';
+export * from './IconAnon';
