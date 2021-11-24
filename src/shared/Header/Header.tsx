@@ -3,14 +3,17 @@ import styles from './header.css';
 import {SearchBlock} from "./SearchBlock";
 import {TreadTitle} from "./TreadTitle";
 import {SortBlock} from "./SortBlock";
-import {UserBlock} from "./SearchBlock/UserBlock";
 
-export function Header() {
+interface IHeaderProps {
+    token: string
+}
+
+export function Header({ token }: IHeaderProps) {
   return (
       <header className={styles.header}>
           <TreadTitle />
-          <SortBlock />
-          <UserBlock />
+          <SortBlock  />
+          <SearchBlock token={token}/>
       </header>
 
   );
