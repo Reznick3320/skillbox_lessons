@@ -6,32 +6,35 @@ import { Header } from "./shared/Header";
 import { Content } from "./shared/Content";
 import { useToken } from "./hooks/useToken";
 import { CardsList } from "./shared/CardsList";
-import {Dropdown} from "./shared/Dropdown";
-import {tokenContext} from "./shared/context/tokenContext";
+import { Dropdown } from "./shared/Dropdown";
+import { tokenContext } from "./shared/context/tokenContext";
+import { UserContextProvider } from "./shared/context/userContext";
 
 
 function AppComponent() {
     const [token] = useToken();
-    const { Provider } = tokenContext;
+
      return (
-         <Provider value={token}>
-               <Layout>
-                   <Header/>
-                        <Content>
-                            <CardsList />
-                            <div style={{ padding: 20 }}>
-                                <Dropdown
-                                    onClose={() => console.log('closed')}
-                                    onOpen={() => console.log('Opened')}
-                                    isOpen={false}
-                                    button={<button>Test</button>}
-                                >
-                                    <CardsList />
-                                </Dropdown>
-                            </div>
-                        </Content>
-               </Layout>
-         </Provider>
+         <tokenContext.Provider value={token}>
+             <UserContextProvider>
+                 <Layout>
+                     <Header/>
+                     <Content>
+                         <CardsList />
+                         <div style={{ padding: 20 }}>
+                             <Dropdown
+                                 onClose={() => console.log('closed')}
+                                 onOpen={() => console.log('Opened')}
+                                 isOpen={false}
+                                 button={<button>Test</button>}
+                             >
+                                 <CardsList />
+                             </Dropdown>
+                         </div>
+                     </Content>
+                 </Layout>
+             </UserContextProvider>
+         </tokenContext.Provider>
     );
 }
 
