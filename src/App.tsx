@@ -7,28 +7,31 @@ import { Content } from "./shared/Content";
 import { useToken } from "./hooks/useToken";
 import { CardsList } from "./shared/CardsList";
 import {Dropdown} from "./shared/Dropdown";
-import {GenericList} from "./shared/genericList/GenericList";
+import {tokenContext} from "./shared/context/tokenContext";
 
 
 function AppComponent() {
-    const [token] = useToken()
+    const [token] = useToken();
+    const { Provider } = tokenContext;
      return (
-       <Layout>
-           <Header token={token} />
-                <Content>
-                    <CardsList />
-                    <div style={{ padding: 20 }}>
-                        <Dropdown
-                            onClose={() => console.log('closed')}
-                            onOpen={() => console.log('Opened')}
-                            isOpen={false}
-                            button={<button>Test</button>}
-                        >
+         <Provider value={token}>
+               <Layout>
+                   <Header/>
+                        <Content>
                             <CardsList />
-                        </Dropdown>
-                    </div>
-                </Content>
-       </Layout>
+                            <div style={{ padding: 20 }}>
+                                <Dropdown
+                                    onClose={() => console.log('closed')}
+                                    onOpen={() => console.log('Opened')}
+                                    isOpen={false}
+                                    button={<button>Test</button>}
+                                >
+                                    <CardsList />
+                                </Dropdown>
+                            </div>
+                        </Content>
+               </Layout>
+         </Provider>
     );
 }
 
