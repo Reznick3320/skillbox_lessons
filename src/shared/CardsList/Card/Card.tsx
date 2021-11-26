@@ -5,11 +5,23 @@ import {CardPreview} from "./CardPreview";
 import {CardMenu} from "./CardMenu";
 import {CardControls} from "./CardControls";
 
-export function Card() {
+interface IPostProps {
+    post: {
+        id: string,
+        title: string,
+        img: string
+    }
+    author: {
+        title: string,
+        img: string
+    }
+}
+
+export function Card({post, author}: IPostProps) {
   return (
       <li className={styles.card}>
-          <CardPreview />
-          <CardTextContent />
+          <CardTextContent title={post.title} author={author}/>
+          <CardPreview img={post.img}/>
           <CardMenu />
           <CardControls />
       </li>

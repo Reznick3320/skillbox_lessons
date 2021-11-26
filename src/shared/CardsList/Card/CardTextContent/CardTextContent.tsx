@@ -1,21 +1,25 @@
 import React from 'react';
 import styles from './cardtextcontent.css';
+import {CardAuthor} from "./CardAuthor";
 
-export function CardTextContent() {
+interface ICardTextContentProps {
+    title: string;
+    author: {
+        title: string;
+        img: string;
+    }
+}
+
+export function CardTextContent({title, author}: ICardTextContentProps) {
   return (
       <div className={styles.textContent}>
           <div className={styles.metaData}>
-              <div className={styles.userLink}>
-                  <img className={styles.avatar}
-                    src='' alt=''
-                  />
-                  <a href='#' className={styles.userName}>Руслан Резничук</a>
-              </div>
-              <span className={styles.createdAt}>4 часа назад</span>
+              <CardAuthor title={author.title} img={author.img} />
+              {/*<span className={styles.createdAt}>4 часа назад</span>*/}
           </div>
           <h2 className={styles.title}>
-              <a href='#' className={styles.postLink}>
-                  Какой-то текст
+              <a href='#post-url' className={styles.postLink}>
+                  {title}
               </a>
           </h2>
       </div>

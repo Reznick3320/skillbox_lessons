@@ -110,6 +110,18 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 
 /***/ }),
 
+/***/ "./src/hooks/usePostsData.ts":
+/*!***********************************!*\
+  !*** ./src/hooks/usePostsData.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.usePostsData = void 0;\r\nvar tokenContext_1 = __webpack_require__(/*! ../shared/context/tokenContext */ \"./src/shared/context/tokenContext.ts\");\r\nvar react_1 = __webpack_require__(/*! react */ \"react\");\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\nfunction usePostsData() {\r\n    var _a = react_1.useState([]), posts = _a[0], setPosts = _a[1];\r\n    var token = react_1.useContext(tokenContext_1.tokenContext);\r\n    react_1.useEffect(function () {\r\n        axios_1.default.get('https://oauth.reddit.com/best.json?sr_detail=true', {\r\n            headers: { Authorization: \"bearer \" + token }\r\n        })\r\n            .then(function (resp) {\r\n            var posts = resp.data.data.children;\r\n            var processedPosts = posts.map(function (post) {\r\n                var _a, _b, _c, _d, _e;\r\n                return __assign(__assign({}, post), { post: {\r\n                        id: post.data.id,\r\n                        title: post.data.title,\r\n                        img: (_a = post.data) === null || _a === void 0 ? void 0 : _a.thumbnail\r\n                    }, author: {\r\n                        title: (_c = (_b = post.data) === null || _b === void 0 ? void 0 : _b.sr_datail) === null || _c === void 0 ? void 0 : _c.display_name,\r\n                        img: (_e = (_d = post.data) === null || _d === void 0 ? void 0 : _d.sr_detail) === null || _e === void 0 ? void 0 : _e.icon_img\r\n                    } });\r\n            });\r\n            console.log(processedPosts);\r\n            setPosts(processedPosts);\r\n        })\r\n            .catch(console.log);\r\n    }, [token]);\r\n    return [posts];\r\n}\r\nexports.usePostsData = usePostsData;\r\n\n\n//# sourceURL=webpack:///./src/hooks/usePostsData.ts?");
+
+/***/ }),
+
 /***/ "./src/hooks/useToken.ts":
 /*!*******************************!*\
   !*** ./src/hooks/useToken.ts ***!
@@ -130,7 +142,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nex
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.useUserData = void 0;\r\nvar react_1 = __webpack_require__(/*! react */ \"react\");\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\nvar tokenContext_1 = __webpack_require__(/*! ../shared/context/tokenContext */ \"./src/shared/context/tokenContext.ts\");\r\nfunction useUserData() {\r\n    var _a = react_1.useState({}), data = _a[0], setData = _a[1];\r\n    var token = react_1.useContext(tokenContext_1.tokenContext);\r\n    react_1.useEffect(function () {\r\n        axios_1.default.get('https://oauth.reddit.com/api/v1/me', {\r\n            headers: { Authorization: \"bearer \" + token }\r\n        })\r\n            .then(function (resp) {\r\n            var userData = resp.data;\r\n            setData({ name: userData.name, iconImg: userData.icon_img });\r\n        })\r\n            .catch(console.log);\r\n    }, [token]);\r\n    return [data];\r\n}\r\nexports.useUserData = useUserData;\r\n\n\n//# sourceURL=webpack:///./src/hooks/useUserData.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.useUserData = void 0;\r\nvar react_1 = __webpack_require__(/*! react */ \"react\");\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\nvar tokenContext_1 = __webpack_require__(/*! ../shared/context/tokenContext */ \"./src/shared/context/tokenContext.ts\");\r\nfunction useUserData() {\r\n    var _a = react_1.useState({}), data = _a[0], setData = _a[1];\r\n    var token = react_1.useContext(tokenContext_1.tokenContext);\r\n    react_1.useEffect(function () {\r\n        axios_1.default.get('https://oauth.reddit.com/api/v1/me/', {\r\n            headers: { Authorization: \"bearer \" + token }\r\n        })\r\n            .then(function (resp) {\r\n            var userData = resp.data;\r\n            setData({ name: userData.name, iconImg: userData.icon_img });\r\n        })\r\n            .catch(console.log);\r\n    }, [token]);\r\n    return [data];\r\n}\r\nexports.useUserData = useUserData;\r\n\n\n//# sourceURL=webpack:///./src/hooks/useUserData.ts?");
 
 /***/ }),
 
@@ -178,7 +190,7 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Card = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar card_css_1 = __importDefault(__webpack_require__(/*! ./card.css */ \"./src/shared/CardsList/Card/card.css\"));\r\nvar CardTextContent_1 = __webpack_require__(/*! ./CardTextContent */ \"./src/shared/CardsList/Card/CardTextContent/index.ts\");\r\nvar CardPreview_1 = __webpack_require__(/*! ./CardPreview */ \"./src/shared/CardsList/Card/CardPreview/index.ts\");\r\nvar CardMenu_1 = __webpack_require__(/*! ./CardMenu */ \"./src/shared/CardsList/Card/CardMenu/index.ts\");\r\nvar CardControls_1 = __webpack_require__(/*! ./CardControls */ \"./src/shared/CardsList/Card/CardControls/index.ts\");\r\nfunction Card() {\r\n    return (react_1.default.createElement(\"li\", { className: card_css_1.default.card },\r\n        react_1.default.createElement(CardPreview_1.CardPreview, null),\r\n        react_1.default.createElement(CardTextContent_1.CardTextContent, null),\r\n        react_1.default.createElement(CardMenu_1.CardMenu, null),\r\n        react_1.default.createElement(CardControls_1.CardControls, null)));\r\n}\r\nexports.Card = Card;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Card.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Card = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar card_css_1 = __importDefault(__webpack_require__(/*! ./card.css */ \"./src/shared/CardsList/Card/card.css\"));\r\nvar CardTextContent_1 = __webpack_require__(/*! ./CardTextContent */ \"./src/shared/CardsList/Card/CardTextContent/index.ts\");\r\nvar CardPreview_1 = __webpack_require__(/*! ./CardPreview */ \"./src/shared/CardsList/Card/CardPreview/index.ts\");\r\nvar CardMenu_1 = __webpack_require__(/*! ./CardMenu */ \"./src/shared/CardsList/Card/CardMenu/index.ts\");\r\nvar CardControls_1 = __webpack_require__(/*! ./CardControls */ \"./src/shared/CardsList/Card/CardControls/index.ts\");\r\nfunction Card(_a) {\r\n    var post = _a.post, author = _a.author;\r\n    return (react_1.default.createElement(\"li\", { className: card_css_1.default.card },\r\n        react_1.default.createElement(CardTextContent_1.CardTextContent, { title: post.title, author: author }),\r\n        react_1.default.createElement(CardPreview_1.CardPreview, { img: post.img }),\r\n        react_1.default.createElement(CardMenu_1.CardMenu, null),\r\n        react_1.default.createElement(CardControls_1.CardControls, null)));\r\n}\r\nexports.Card = Card;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Card.tsx?");
 
 /***/ }),
 
@@ -298,7 +310,7 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardPreview = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardpreview_css_1 = __importDefault(__webpack_require__(/*! ./cardpreview.css */ \"./src/shared/CardsList/Card/CardPreview/cardpreview.css\"));\r\nfunction CardPreview() {\r\n    return (react_1.default.createElement(\"div\", { className: cardpreview_css_1.default.previews },\r\n        react_1.default.createElement(\"img\", { className: cardpreview_css_1.default.previewsImg, src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLSlyO6ea9vAtMM3mCGv7eho-lhpNxwXEPvQ&usqp=CAU', alt: 'img' })));\r\n}\r\nexports.CardPreview = CardPreview;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardPreview/CardPreview.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardPreview = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardpreview_css_1 = __importDefault(__webpack_require__(/*! ./cardpreview.css */ \"./src/shared/CardsList/Card/CardPreview/cardpreview.css\"));\r\nfunction CardPreview(_a) {\r\n    var img = _a.img;\r\n    var defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLSlyO6ea9vAtMM3mCGv7eho-lhpNxwXEPvQ&usqp=CAU';\r\n    return (react_1.default.createElement(\"div\", { className: cardpreview_css_1.default.previews },\r\n        react_1.default.createElement(\"img\", { className: cardpreview_css_1.default.previewsImg, src: img.startsWith(\"https://\") ? img : defaultImg, alt: 'img' })));\r\n}\r\nexports.CardPreview = CardPreview;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardPreview/CardPreview.tsx?");
 
 /***/ }),
 
@@ -326,6 +338,42 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 
 /***/ }),
 
+/***/ "./src/shared/CardsList/Card/CardTextContent/CardAuthor/CardAuthor.tsx":
+/*!*****************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardTextContent/CardAuthor/CardAuthor.tsx ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardAuthor = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardauthor_css_1 = __importDefault(__webpack_require__(/*! ./cardauthor.css */ \"./src/shared/CardsList/Card/CardTextContent/CardAuthor/cardauthor.css\"));\r\nfunction CardAuthor(_a) {\r\n    var title = _a.title, img = _a.img;\r\n    var defaultImg = \"https://cdn.dribbble.com/users/2531150/screenshots/7381472/media/be977f32a3f5abf4898f2c343ab7bfe0.jpg?compress=1&resize=800x600\";\r\n    return (react_1.default.createElement(\"a\", { className: cardauthor_css_1.default.userLink, href: \"#user_url\" },\r\n        react_1.default.createElement(\"img\", { className: cardauthor_css_1.default.avatar, src: img ? img : defaultImg, alt: 'avatar' }),\r\n        react_1.default.createElement(\"span\", { className: cardauthor_css_1.default.userName }, title)));\r\n}\r\nexports.CardAuthor = CardAuthor;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardTextContent/CardAuthor/CardAuthor.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/CardTextContent/CardAuthor/cardauthor.css":
+/*!*****************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardTextContent/CardAuthor/cardauthor.css ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n\t\"avatar\": \"cardauthor__avatar--1N7aK\",\n\t\"username\": \"cardauthor__username--1IYQj\"\n});\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardTextContent/CardAuthor/cardauthor.css?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/CardTextContent/CardAuthor/index.ts":
+/*!***********************************************************************!*\
+  !*** ./src/shared/CardsList/Card/CardTextContent/CardAuthor/index.ts ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./CardAuthor */ \"./src/shared/CardsList/Card/CardTextContent/CardAuthor/CardAuthor.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardTextContent/CardAuthor/index.ts?");
+
+/***/ }),
+
 /***/ "./src/shared/CardsList/Card/CardTextContent/CardTextContent.tsx":
 /*!***********************************************************************!*\
   !*** ./src/shared/CardsList/Card/CardTextContent/CardTextContent.tsx ***!
@@ -334,7 +382,7 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardTextContent = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardtextcontent_css_1 = __importDefault(__webpack_require__(/*! ./cardtextcontent.css */ \"./src/shared/CardsList/Card/CardTextContent/cardtextcontent.css\"));\r\nfunction CardTextContent() {\r\n    return (react_1.default.createElement(\"div\", { className: cardtextcontent_css_1.default.textContent },\r\n        react_1.default.createElement(\"div\", { className: cardtextcontent_css_1.default.metaData },\r\n            react_1.default.createElement(\"div\", { className: cardtextcontent_css_1.default.userLink },\r\n                react_1.default.createElement(\"img\", { className: cardtextcontent_css_1.default.avatar, src: '', alt: '' }),\r\n                react_1.default.createElement(\"a\", { href: '#', className: cardtextcontent_css_1.default.userName }, \"\\u0420\\u0443\\u0441\\u043B\\u0430\\u043D \\u0420\\u0435\\u0437\\u043D\\u0438\\u0447\\u0443\\u043A\")),\r\n            react_1.default.createElement(\"span\", { className: cardtextcontent_css_1.default.createdAt }, \"4 \\u0447\\u0430\\u0441\\u0430 \\u043D\\u0430\\u0437\\u0430\\u0434\")),\r\n        react_1.default.createElement(\"h2\", { className: cardtextcontent_css_1.default.title },\r\n            react_1.default.createElement(\"a\", { href: '#', className: cardtextcontent_css_1.default.postLink }, \"\\u041A\\u0430\\u043A\\u043E\\u0439-\\u0442\\u043E \\u0442\\u0435\\u043A\\u0441\\u0442\"))));\r\n}\r\nexports.CardTextContent = CardTextContent;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardTextContent/CardTextContent.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardTextContent = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardtextcontent_css_1 = __importDefault(__webpack_require__(/*! ./cardtextcontent.css */ \"./src/shared/CardsList/Card/CardTextContent/cardtextcontent.css\"));\r\nvar CardAuthor_1 = __webpack_require__(/*! ./CardAuthor */ \"./src/shared/CardsList/Card/CardTextContent/CardAuthor/index.ts\");\r\nfunction CardTextContent(_a) {\r\n    var title = _a.title, author = _a.author;\r\n    return (react_1.default.createElement(\"div\", { className: cardtextcontent_css_1.default.textContent },\r\n        react_1.default.createElement(\"div\", { className: cardtextcontent_css_1.default.metaData },\r\n            react_1.default.createElement(CardAuthor_1.CardAuthor, { title: author.title, img: author.img })),\r\n        react_1.default.createElement(\"h2\", { className: cardtextcontent_css_1.default.title },\r\n            react_1.default.createElement(\"a\", { href: '#post-url', className: cardtextcontent_css_1.default.postLink }, title))));\r\n}\r\nexports.CardTextContent = CardTextContent;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/CardTextContent/CardTextContent.tsx?");
 
 /***/ }),
 
@@ -394,7 +442,7 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardsList = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar cardslist_css_1 = __importDefault(__webpack_require__(/*! ./cardslist.css */ \"./src/shared/CardsList/cardslist.css\"));\r\nvar Card_1 = __webpack_require__(/*! ./Card */ \"./src/shared/CardsList/Card/index.ts\");\r\nfunction CardsList() {\r\n    return (react_1.default.createElement(\"ul\", { className: cardslist_css_1.default.cardsList },\r\n        react_1.default.createElement(Card_1.Card, null)));\r\n}\r\nexports.CardsList = CardsList;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/CardsList.tsx?");
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CardsList = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar cardslist_css_1 = __importDefault(__webpack_require__(/*! ./cardslist.css */ \"./src/shared/CardsList/cardslist.css\"));\r\nvar Card_1 = __webpack_require__(/*! ./Card */ \"./src/shared/CardsList/Card/index.ts\");\r\nvar postContext_1 = __webpack_require__(/*! ../context/postContext */ \"./src/shared/context/postContext.tsx\");\r\nfunction CardsList() {\r\n    var posts = react_1.useContext(postContext_1.postsContext);\r\n    var cards = posts.map(function (post) {\r\n        return react_1.default.createElement(Card_1.Card, { key: post.post.id, post: post.post, author: post.author });\r\n    });\r\n    return (react_1.default.createElement(\"ul\", { className: cardslist_css_1.default.cardsList }, cards.length !== 0 ? cards : react_1.default.createElement(\"li\", null, \"Loading...\")));\r\n}\r\nexports.CardsList = CardsList;\r\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/CardsList.tsx?");
 
 /***/ }),
 
@@ -839,6 +887,18 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n\t\"layout\": \"layout__layout--1BrJT\"\n});\n\n\n//# sourceURL=webpack:///./src/shared/Layout/layout.css?");
+
+/***/ }),
+
+/***/ "./src/shared/context/postContext.tsx":
+/*!********************************************!*\
+  !*** ./src/shared/context/postContext.tsx ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.PostContextProvider = exports.postsContext = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar usePostsData_1 = __webpack_require__(/*! ../../hooks/usePostsData */ \"./src/hooks/usePostsData.ts\");\r\nexports.postsContext = react_1.default.createContext([]);\r\nfunction PostContextProvider(_a) {\r\n    var children = _a.children;\r\n    var posts = usePostsData_1.usePostsData()[0];\r\n    return (react_1.default.createElement(exports.postsContext.Provider, { value: posts }, children));\r\n}\r\nexports.PostContextProvider = PostContextProvider;\r\n\n\n//# sourceURL=webpack:///./src/shared/context/postContext.tsx?");
 
 /***/ }),
 
