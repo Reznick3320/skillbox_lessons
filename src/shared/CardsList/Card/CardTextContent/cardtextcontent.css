@@ -1,3 +1,12 @@
 .metaData {
     display: inline-block;
+    margin-bottom: 20px;
 }
+
+.textContent {
+    width: 75%;
+    padding: 15px 3px;
+    margin: 10px 0;
+    z-index: 1;
+}
+

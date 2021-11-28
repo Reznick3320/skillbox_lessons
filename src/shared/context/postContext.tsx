@@ -1,20 +1,21 @@
 import React from "react";
-import {usePostsData} from "../../hooks/usePostsData";
+import {usePostsData} from "../hooks/usePostsData";
 
 interface IPostItemContext {
     post: {
-        id: string,
-        title: string,
-        img: string
+        id: string;
+        title: string;
+        img: string;
     }
     author: {
-        title: string,
-        img: string
-    }
+        title: string;
+        img: string;
+    };
 }
 
-export const postsContext = React.createContext<IPostItemContext[]>([]);
-export function PostContextProvider({ children }: { children: React.ReactNode}) {
+export const postsContext = React.createContext<IPostItemContext[]>([])
+
+export function PostsContextProvider({children}: {children: React.ReactNode}) {
     const [posts] = usePostsData();
 
     return (
@@ -22,5 +23,4 @@ export function PostContextProvider({ children }: { children: React.ReactNode}) 
             {children}
         </postsContext.Provider>
     )
-
 }

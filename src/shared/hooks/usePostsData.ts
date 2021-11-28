@@ -1,4 +1,4 @@
-import {tokenContext} from "../shared/context/tokenContext";
+import {tokenContext} from "../context/tokenContext";
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 

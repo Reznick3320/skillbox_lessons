@@ -6,10 +6,10 @@ interface ICardPreviewProps {
 }
 
 export function CardPreview({img}: ICardPreviewProps) {
-    const defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLSlyO6ea9vAtMM3mCGv7eho-lhpNxwXEPvQ&usqp=CAU';
+    const defaultImg = 'https://b.thumbs.redditmedia.com/6WNaJtSmMT3l4IrI6f-FNgb-PPUgjwTce6QCyT-ScJI.jpg';
   return (
       <div className={styles.previews}>
-        <img className={styles.previewsImg}
+        <img className={styles.previews}
              src={img.startsWith("https://") ? img : defaultImg}
              alt='img'
         />

@@ -4,11 +4,12 @@ import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout"
 import { Header } from "./shared/Header";
 import { Content } from "./shared/Content";
-import { useToken } from "./hooks/useToken";
+import { useToken } from "./shared/hooks/useToken";
 import { CardsList } from "./shared/CardsList";
 import { Dropdown } from "./shared/Dropdown";
 import { tokenContext } from "./shared/context/tokenContext";
 import { UserContextProvider } from "./shared/context/userContext";
+import {PostsContextProvider} from "./shared/context/postContext";
 
 
 function AppComponent() {
@@ -17,22 +18,24 @@ function AppComponent() {
      return (
          <tokenContext.Provider value={token}>
              <UserContextProvider>
-                 <Layout>
-                     <Header/>
-                     <Content>
-                         <CardsList />
-                         <div style={{ padding: 20 }}>
-                             <Dropdown
-                                 onClose={() => console.log('closed')}
-                                 onOpen={() => console.log('Opened')}
-                                 isOpen={false}
-                                 button={<button>Test</button>}
-                             >
-                                 <CardsList />
-                             </Dropdown>
-                         </div>
-                     </Content>
-                 </Layout>
+                 <PostsContextProvider>
+                    <Layout>
+                        <Header/>
+                        <Content>
+                            <CardsList />
+                            <div style={{ padding: 20 }}>
+                                <Dropdown
+                                    onClose={() => console.log('closed')}
+                                    onOpen={() => console.log('Opened')}
+                                    isOpen={false}
+                                    button={<button>Test</button>}
+                                >
+                                    <CardsList />
+                                </Dropdown>
+                            </div>
+                        </Content>
+                    </Layout>
+                 </PostsContextProvider>
              </UserContextProvider>
          </tokenContext.Provider>
     );

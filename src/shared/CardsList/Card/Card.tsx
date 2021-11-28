@@ -20,8 +20,8 @@ interface IPostProps {
 export function Card({post, author}: IPostProps) {
   return (
       <li className={styles.card}>
-          <CardTextContent title={post.title} author={author}/>
           <CardPreview img={post.img}/>
+          <CardTextContent post={post} author={author} />
           <CardMenu />
           <CardControls />
       </li>
