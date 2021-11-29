@@ -30,7 +30,9 @@ export function CardTextContent({post, author}: ICardTextContentProps) {
                 </a>
             </div>
             { isModalOpen && (
-                <Post />
+                <Post
+                    onClose={() => setIsModalOpen(false)}
+                />
             )}
         </div>
     );
