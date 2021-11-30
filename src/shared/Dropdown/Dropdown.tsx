@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from './dropdown.css';
+import {Post} from "../Post";
+import {getCoords} from "../../utils/getCoords";
+import {DropdownContent} from "./DropdownContent";
 
 interface IDropdownProps {
   button: React.ReactNode;
@@ -13,13 +16,24 @@ const NOOP = () => {};
 
 export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NOOP }: IDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
+  const [position, setPosition] = React.useState({top: '100px', left: '100px'})
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
   React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
 
-  const handleOpen = () => {
+  const handleOpen = (event: React.MouseEvent) => {
     if (isOpen === undefined) {
       setIsDropdownOpen(!isDropdownOpen)
     }
+
+    if (event.currentTarget instanceof HTMLElement) {
+      const coords = getCoords((event.currentTarget))
+
+      setPosition({
+        top: `${coords.top + 30}px`,
+        left: `${coords.left}px`,
+      })
+    }
+
   }
   return (
       <div className={styles.container}>
@@ -27,11 +41,11 @@ export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NO
           { button }
         </div>
         {isDropdownOpen && (
-            <div className={styles.listContainer}>
-              <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-                {children}
-              </div>
-            </div>
+            <DropdownContent
+                children={children}
+                setIsDropdownOpen={setIsDropdownOpen}
+                onClose={() => setIsDropdownOpen(!isDropdownOpen)}
+                position={position} />
         )}
       </div>
   );

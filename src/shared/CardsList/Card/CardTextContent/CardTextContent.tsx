@@ -19,7 +19,7 @@ export function CardTextContent({post, author}: ICardTextContentProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className={styles.textContent} onClick={() => console.log('clicked!')}>
+        <div className={styles.textContent}>
             <div className={styles.metaData}>
                 <CardAuthor title={author.title} img={author.img}/>
                 {<span className={styles.createdAt}>4 часа назад</span>}
