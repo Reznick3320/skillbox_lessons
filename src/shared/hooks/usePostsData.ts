@@ -17,7 +17,6 @@ interface IPostItem {
 
 export function usePostsData() {
     const [posts, setPosts] = useState<IPostItem[]>([]);
-    //const token = useContext(tokenContext);
     const token = useSelector<TRootState, string>(state => state.token)
 
     useEffect(() => {
@@ -40,8 +39,6 @@ export function usePostsData() {
                         }
                     }
                 })
-
-                console.log(processedPosts);
                 setPosts(processedPosts);
             })
             .catch(console.log)

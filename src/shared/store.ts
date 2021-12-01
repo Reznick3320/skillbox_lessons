@@ -31,7 +31,6 @@ export const  rootReducer: Reducer<TRootState> = ((state = initialState, action)
                 commentText: action.text,
             };
         case SET_TOKEN:
-            console.log('case SET_TOKEN')
             return {
                 ...state,
                 token: action.token,
