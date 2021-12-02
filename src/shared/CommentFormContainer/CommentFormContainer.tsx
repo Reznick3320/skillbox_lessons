@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FormEvent} from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { CommentForm } from "../CommentFrom";
-import {TRootState, upDateComment} from '../store';
+import {TRootState, upDateComment} from '../store/store';
 
 
 export function CommentFormContainer() {

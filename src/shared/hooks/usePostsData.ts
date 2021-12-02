@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { TRootState } from "../store";
+import { TRootState } from "../store/store";
 
 interface IPostItem {
     post: {
