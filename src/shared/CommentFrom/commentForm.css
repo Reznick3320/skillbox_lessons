@@ -21,4 +21,10 @@
     background: #CC6633;
     border-radius: 0px 0px 3px 0px;
     margin: 10px 0;
+    cursor: pointer;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: default;
 }

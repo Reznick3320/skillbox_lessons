@@ -13,7 +13,7 @@ const initialState:TRootState = {
     token: '',
     me: {
         loading: false,
-        error: '',
+        error: '', 
         data: {}
     },
 }
@@ -30,7 +30,7 @@ export const upDateComment: ActionCreator<TUpDateCommentAction> = (text: string)
 });
 
 
-const SET_TOKEN = 'SET_TOKEN';
+export const SET_TOKEN = 'SET_TOKEN';
 type TSetTokenAction = {
     type: typeof SET_TOKEN;
     token: string;

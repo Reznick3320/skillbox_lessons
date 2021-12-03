@@ -9,11 +9,11 @@ import { Dropdown } from "./shared/Dropdown";
 import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postContext";
 import { commentContext } from "./shared/context/commentContext";
-import { applyMiddleware, createStore } from "redux";
+import { Action, applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux"
 import { composeWithDevTools } from "redux-devtools-extension";
-import { rootReducer, setTokenAction } from "./shared/store/store";
-import thunk from "redux-thunk";
+import { rootReducer, SET_TOKEN, TRootState } from "./shared/store/store";
+import thunk, { ThunkAction } from "redux-thunk";
 
 
 
@@ -21,13 +21,19 @@ export const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
 ));
 
+const saveToken = (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, setState) => {
+    const token = localStorage.getItem('token') || window.__token__;
+    dispatch({type: SET_TOKEN, token: token})
+}
+
 function AppComponent() {
     const [commentValue, setCommentValue] = useState('');
     const CommentProvider = commentContext.Provider;
 
     useEffect(() => {
-        const token = localStorage.getItem('token') || window.__token__;
-        store.dispatch(setTokenAction(token));
+        //@ts-ignore
+        store.dispatch(saveToken());
+        
     })
      return (
          <Provider store={store}>
